@@ -2,6 +2,7 @@ from shortener import app
 from flask import render_template, request, redirect
 import time
 from shortener.data import Url
+from shortener import db 
 
 home_url = 'http://127.0.0.1:5000/'
 

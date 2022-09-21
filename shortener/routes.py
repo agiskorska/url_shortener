@@ -3,6 +3,7 @@ from flask import render_template, request, redirect
 import time
 from shortener.data import Url
 from shortener import db 
+from werkzeug import exceptions
 
 home_url = 'http://127.0.0.1:5000/'
 
@@ -28,13 +29,18 @@ def shortened():
 
 @app.get('/<id>')
 def redirect_to_url(id):
-    url = Url.query.filter_by(id=id).first()
+    url = Url.query.filter_by(id=id).first_or_404()
     print(url)
     return redirect(url, code=302)
 
 @app.get('/thankyou')
 def thankyou():
     return '<h1>thank you!</h1>'
+
+@app.errorhandler(404)
+def page_not_found(_):
+    print('hit')
+    return '404 page not found', 404
 
 if __name__ == '__main__':
     app.run(debug=True)

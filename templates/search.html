@@ -2,7 +2,7 @@
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
     <form action="/shortened" method="POST">
-        <input type="text" value="" placeholder="Paste your URL" />
+        <input type="text" name="long_url"  id="shortener" value="" placeholder="Paste your URL" />
         <input type="submit" value="Submit" />
     </form>
 {% endblock %}

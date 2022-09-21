@@ -1,5 +1,7 @@
 {% extends 'default.html' %}
 {% block title %}{{ title }}{% endblock %}
+{% block header %}
+<h1>Welcome to our Url Snapper</h1>{% endblock %}
 {% block content %}
     <form action="/shortened" method="POST">
         <input type="text" name="long_url"  id="shortener" value="" placeholder="Paste your URL" />

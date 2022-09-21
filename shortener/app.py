@@ -1,16 +1,9 @@
-from flask import Flask, render_template, request, redirect
-from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
+from shortener import app
+from flask import render_template, request, redirect
 import time
-from db.data import Url
+from shortener.data import Url
 
 home_url = 'http://127.0.0.1:5000/'
-
-
-app = Flask(__name__)
-CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url.db'
-db  = SQLAlchemy(app)
 
 @app.get('/')
 def index():

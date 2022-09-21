@@ -29,7 +29,7 @@ def shortened():
 def redirect_to_url(id):
     url = next((i['long_url'] for i in data if i['id'] == id), None)
     print(url)
-    return redirect('https://google.com', code=302)
+    return redirect(url, code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)

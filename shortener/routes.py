@@ -6,6 +6,8 @@ from shortener import db
 
 home_url = 'http://127.0.0.1:5000/'
 
+db.create_all()
+
 @app.get('/')
 def index():
     return render_template('search.html', title='Shorten URL' )

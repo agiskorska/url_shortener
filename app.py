@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask_cors import CORS
-import time
 from flask_sqlalchemy import SQLAlchemy
+import time
+from db.data import Url
 
 home_url = 'http://127.0.0.1:5000/'
 
@@ -10,13 +11,6 @@ app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///url.db'
 db  = SQLAlchemy(app)
-
-class Url(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    long_url = db.Column(db.String(80), unique=True, nullable=False)
-
-    def __repr__(self):
-        return self.long_url
 
 @app.get('/')
 def index():

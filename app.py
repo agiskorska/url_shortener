@@ -1,5 +1,4 @@
-from turtle import home
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_cors import CORS
 import time
 from db import data
@@ -26,6 +25,11 @@ def shortened():
     else:
         return 'wrong route'
 
+@app.get('/<id>')
+def redirect_to_url(id):
+    url = next((i['long_url'] for i in data if i['id'] == id), None)
+    print(url)
+    return redirect('https://google.com', code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)

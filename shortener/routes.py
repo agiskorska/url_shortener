@@ -40,7 +40,7 @@ def thankyou():
 @app.errorhandler(404)
 def page_not_found(_):
     print('hit')
-    return '404 page not found', 404
+    return render_template('errors/404.html'), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

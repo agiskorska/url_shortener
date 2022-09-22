@@ -1,0 +1,9 @@
+{% block header %}        
+    <nav>
+        <a href="/">Home</a>
+    </nav>{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <p>Your shortened url is {{ url }}</p><button value="{{ url }}" id="copyUrl">Copy URL</button>
+    <script src="{{ url_for('static', filename='/scripts/copy.js') }}"></script>
+{% endblock %}
